@@ -1,12 +1,169 @@
-/* index.css */
+/* --- GLOBAL RESET --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
+  overflow-x: hidden; /* Screen ko daayein-baayein hilne se rokta hai */
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2E7D32; /* Green Color */
+}
+
+.nav-links button {
+  margin-left: 15px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.btn-login {
+  background: transparent;
+  color: #333;
+}
+
+.btn-get-started {
+  background-color: #2E7D32;
+  color: white;
+}
+
+/* --- HERO SECTION (Main Content) --- */
+.hero-container {
+  display: flex; /* Laptop par side-by-side */
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 5%;
+  min-height: 80vh; /* Puri screen cover kare */
+  gap: 2rem;
+}
+
+/* Text wala hissa */
+.hero-text {
+  flex: 1; /* Aadhi jagah le */
+  max-width: 600px;
+}
+
+.tagline {
+  display: inline-block;
+  background-color: #e8f5e9;
+  color: #2E7D32;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+.highlight-green {
+  color: #2E7D32;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-primary {
+  background-color: #F57F20; /* Orange Button */
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Image wala hissa */
+.hero-image {
+  flex: 1; /* Baaki aadhi jagah le */
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
   width: 100%;
-  height: 100vh;
-  overflow-x: hidden; /* Side scrollbar hatane ke liye */
+  max-width: 500px; /* Image zyada badi na ho */
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* --- 📱 MOBILE RESPONSIVE CODE (Magic starts here) --- */
+@media screen and (max-width: 768px) {
+  
+  /* Navbar adjust karein */
+  .navbar {
+    padding: 1rem;
+  }
+
+  /* Hero Section ko Column banayein (Upar-Neeche) */
+  .hero-container {
+    flex-direction: column-reverse; /* Image upar, Text neeche ke liye 'column-reverse' lagayein */
+    padding: 2rem 1rem;
+    text-align: center; /* Text center karein */
+    height: auto;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem; /* Heading choti karein */
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .cta-buttons {
+    justify-content: center; /* Buttons beech mein layein */
+    flex-wrap: wrap; /* Jagah kam ho to button upar-neeche ho jaye */
+  }
+
+  .hero-image img {
+    max-width: 100%; /* Image screen se bahar na jaye */
+    margin-bottom: 20px;
+  }
 }
