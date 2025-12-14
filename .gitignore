@@ -1,0 +1,16 @@
+# --- GLOBAL IGNORE ---
+.DS_Store
+
+# --- BACKEND (Python) ---
+backend/__pycache__/
+backend/*.py[cod]
+backend/venv/
+backend/.env
+*.db
+*.sqlite3
+
+# --- FRONTEND (React) ---
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
