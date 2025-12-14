@@ -60,3 +60,50 @@ Follow these steps to set up the project on your machine.
 ```bash
 git clone [https://github.com/dj220603/reverse-mentorship-platform.git](https://github.com/dj220603/reverse-mentorship-platform.git)
 cd reverse-mentorship-platform
+
+2. Setup Backend (FastAPI)
+Bash
+
+cd backend
+# Create virtual environment
+python -m venv venv
+# Activate venv (Windows)
+venv\Scripts\activate
+# Install dependencies
+pip install -r requirements.txt
+# Run Server
+uvicorn main:app --reload
+Backend runs at: http://127.0.0.1:8000
+
+3. Setup Frontend (React)
+Open a new terminal:
+
+Bash
+
+cd frontend
+# Install dependencies
+npm install
+# Run Frontend
+npm run dev
+Frontend runs at: http://localhost:5173
+
+4. Setup Database (Docker)
+Bash
+
+docker-compose up -d
+📸 Screenshots
+🔮 Future Improvements
+Video Integration: Implementing Jitsi/WebRTC for in-app video calls.
+
+Biometric Login: Face ID login for seniors to avoid remembering passwords.
+
+Gamification: Badges and rewards for Mentors.
+
+👨‍💻 Author
+Deepak Joshi
+
+GitHub: dj220603
+
+Role: Full Stack Developer & AI Enthusiast
+
+Made with ❤️ for our Elders.
