@@ -3,6 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from models import User
+from sqlmodel import SQLModel, create_engine
 
 # 1. DATABASE_URL Render ke Environment Variable se lo
 SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
@@ -36,4 +37,6 @@ def get_db():
 
 # ---------------------------------------------------------
 def create_db_and_tables():
+    from models import User, Base
+    print("Creating tables...")
     Base.metadata.create_all(bind=engine)
