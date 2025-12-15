@@ -6,14 +6,12 @@ from sqlalchemy.orm import sessionmaker
 # 1. DATABASE_URL Render ke Environment Variable se lo
 SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
 
-# 2. Agar Render par URL nahi mila (matlab aap shayad local chala rahe ho), 
-# to ye fallback use karega (Optional: Aap isse apni local settings se replace kar sakte hain)
+# 2. Agar Render par URL nahi mila (matlab aap shayad local chala rahe ho)
 if not SQLALCHEMY_DATABASE_URL:
-    # Ye tabhi chalega jab aap apne laptop par bina .env ke chalaoge
     SQLALCHEMY_DATABASE_URL = "postgresql://postgres:password@localhost/reverse_mentorship"
 
 # 3. Render Fix: Render URL 'postgres://' deta hai, lekin SQLAlchemy ko 'postgresql://' chahiye
-if SQLALCHEMY_DATABASE_URL.startswith("postgres://"):
+if SQLALCHEMY_DATABASE_URL and SQLALCHEMY_DATABASE_URL.startswith("postgres://"):
     SQLALCHEMY_DATABASE_URL = SQLALCHEMY_DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 # 4. Engine Create karo
@@ -32,3 +30,9 @@ def get_db():
         yield db
     finally:
         db.close()
+
+# ---------------------------------------------------------
+
+# ---------------------------------------------------------
+def create_db_and_tables():
+    Base.metadata.create_all(bind=engine)
