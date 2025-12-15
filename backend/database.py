@@ -2,6 +2,7 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from models import User
 
 # 1. DATABASE_URL Render ke Environment Variable se lo
 SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
