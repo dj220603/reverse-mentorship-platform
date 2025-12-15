@@ -37,6 +37,6 @@ def get_db():
 
 # ---------------------------------------------------------
 def create_db_and_tables():
-    from models import User, Base
+    from models import User
     print("Creating tables...")
-    Base.metadata.create_all(bind=engine)
+    SQLModel.metadata.create_all(bind=engine)
