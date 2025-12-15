@@ -1,10 +1,34 @@
-from sqlmodel import SQLModel, create_engine
+import os
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
-# Note: Hum 'localhost' use kar rahe hain kyunki Python Docker ke bahar run ho raha hai
-DATABASE_URL = "postgresql://myuser:mypassword@localhost:5432/mentorship_platform"
+# 1. DATABASE_URL Render ke Environment Variable se lo
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
 
-engine = create_engine(DATABASE_URL)
+# 2. Agar Render par URL nahi mila (matlab aap shayad local chala rahe ho), 
+# to ye fallback use karega (Optional: Aap isse apni local settings se replace kar sakte hain)
+if not SQLALCHEMY_DATABASE_URL:
+    # Ye tabhi chalega jab aap apne laptop par bina .env ke chalaoge
+    SQLALCHEMY_DATABASE_URL = "postgresql://postgres:password@localhost/reverse_mentorship"
 
-def create_db_and_tables():
-    # Ye function database me tables automatically bana dega
-    SQLModel.metadata.create_all(engine)
+# 3. Render Fix: Render URL 'postgres://' deta hai, lekin SQLAlchemy ko 'postgresql://' chahiye
+if SQLALCHEMY_DATABASE_URL.startswith("postgres://"):
+    SQLALCHEMY_DATABASE_URL = SQLALCHEMY_DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
+# 4. Engine Create karo
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
+
+# 5. Session banao
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# 6. Base Model
+Base = declarative_base()
+
+# 7. DB Dependency (Har API request ke liye connection dena)
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
