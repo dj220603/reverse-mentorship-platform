@@ -73,7 +73,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 # Run Server
 uvicorn main:app --reload
-Backend runs at: http://127.0.0.1:8000
+Backend runs at: https://reverse-mentorship-platform.onrender.com
 
 3. Setup Frontend (React)
 Open a new terminal:

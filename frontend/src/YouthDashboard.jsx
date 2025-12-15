@@ -26,7 +26,7 @@ function YouthDashboard() {
       // Backend ko naya data bhejo
       // Note: Hamein username/email/password bhi bhejna padta hai kyunki API model poora user expect karta hai
       // Lekin hum backend me sirf interests aur language update kar rahe hain.
-      await axios.put(`http://127.0.0.1:8000/update-profile/${userId}`, {
+      await axios.put(`https://reverse-mentorship-platform.onrender.com/update-profile/${userId}`, {
         ...formData,
         username: username, // Ye dummy bhej rahe hain taaki validation fail na ho
         email: "dummy@email.com", 

@@ -77,7 +77,7 @@ function LoginPage() {
       if(fieldName === 'interests') {
            try {
               // Backend se pucho iska technical matlab kya hai
-              const res = await axios.post("http://127.0.0.1:8000/suggest-interests/", {text: spokenText});
+              const res = await axios.post("https://reverse-mentorship-platform.onrender.com/suggest-interests/", {text: spokenText});
               setFormData(prev => ({...prev, [fieldName]: res.data.suggested}));
            } catch(err) { 
                // Error aaye to jo suna wahi likh do
@@ -117,13 +117,13 @@ function LoginPage() {
     setMessage("")
     try {
       if (isLogin) {
-        const response = await axios.post("http://127.0.0.1:8000/login/", { email: formData.email, password: formData.password })
+        const response = await axios.post("https://reverse-mentorship-platform.onrender.com/login/", { email: formData.email, password: formData.password })
         localStorage.setItem("user_id", response.data.user_id)
         localStorage.setItem("user_name", response.data.username)
         if (response.data.role === "elderly") navigate("/elderly-dashboard")
         else navigate("/youth-dashboard")
       } else {
-        await axios.post("http://127.0.0.1:8000/users/", formData)
+        await axios.post("https://reverse-mentorship-platform.onrender.com/users/", formData)
         setMessage("✅ Account ban gaya! Ab Login karein.")
         setIsLogin(true)
       }
