@@ -233,6 +233,7 @@ function LoginPage() {
                     <option value="Hindi">🇮🇳 Hindi</option>
                     <option value="English">🇬🇧 English</option>
                     <option value="Marathi">🇮🇳 Marathi</option>
+                    <option value= "Kumaoni">🇮🇳 Kumaoni</option>
                   </select>
                </div>
 
